@@ -37,47 +37,51 @@ const InventoryTable = ({ handleEdit }) => {
           </tr>
         </MDBTableHead>
         <MDBTableBody>
-          {inventory?.data?.map((item, index) => (
-            <tr
-              key={index}
-              className={classNames({
-                disabled: item?.visibility === 0,
-              })}
-            >
-              <td>{item.name}</td>
-              <td>{item.category}</td>
-              <td>{item.price}</td>
-              <td>{item.quantity}</td>
-              <td>{item.value}</td>
-              <td className="table-icons">
-                <button
-                  disabled={!adminView || item?.visibility === 0}
-                  onClick={() => handleEdit(item)}
-                >
-                  <img src={edit} alt="" />
-                </button>
-                <button
-                  disabled={!adminView || item?.visibility === 0}
-                  onClick={() =>
-                    dispatch({ type: "DISABLE_ITEM", payload: item.id })
-                  }
-                >
-                  <img
-                    src={item?.visibility === 0 ? invisible : visible}
-                    alt=""
-                  />
-                </button>
-                <button
-                  disabled={!adminView || item?.visibility === 0}
-                  onClick={() =>
-                    dispatch({ type: "DELETE_ITEM", payload: item.id })
-                  }
-                >
-                  <img src={trash} alt="" />
-                </button>
-              </td>
-            </tr>
-          ))}
+          {inventory?.data?.map((item, index) => {
+            if (!adminView && item.visibility === 0) return;
+
+            return (
+              <tr
+                key={index}
+                className={classNames({
+                  disabled: item?.visibility === 0,
+                })}
+              >
+                <td>{item.name}</td>
+                <td>{item.category}</td>
+                <td>{item.price}</td>
+                <td>{item.quantity}</td>
+                <td>{item.value}</td>
+                <td className="table-icons">
+                  <button
+                    disabled={!adminView || item?.visibility === 0}
+                    onClick={() => handleEdit(item)}
+                  >
+                    <img src={edit} alt="" />
+                  </button>
+                  <button
+                    disabled={!adminView}
+                    onClick={() =>
+                      dispatch({ type: "DISABLE_ITEM", payload: item.id })
+                    }
+                  >
+                    <img
+                      src={item?.visibility === 0 ? invisible : visible}
+                      alt=""
+                    />
+                  </button>
+                  <button
+                    disabled={!adminView}
+                    onClick={() =>
+                      dispatch({ type: "DELETE_ITEM", payload: item.id })
+                    }
+                  >
+                    <img src={trash} alt="" />
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </MDBTableBody>
       </MDBTable>
     </div>
