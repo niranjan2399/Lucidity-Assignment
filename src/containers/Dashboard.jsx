@@ -45,9 +45,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (inventory?.fetching || inventory?.data) return;
     dispatch(fetchInventory());
-  });
+  }, []);
 
   useEffect(() => {
     if (!inventory?.data) return;
