@@ -1,0 +1,122 @@
+.dashboard-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  background-color: rgb(22, 23, 24);
+
+  .loading-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+  }
+
+  .inventory {
+    padding: 0.75rem;
+    .inventory-title {
+      color: white;
+      padding-bottom: 1rem;
+    }
+    .inventory-card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.625rem;
+
+      .inventory-card {
+        color: white;
+      }
+    }
+  }
+
+  .edit-modal {
+    .edit-modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      color: white;
+      font-size: 1.5rem;
+      padding-bottom: 0;
+      margin-bottom: -1rem;
+
+      .btn-close {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+    }
+    .modal-content {
+      background-color: rgb(41, 43, 39);
+    }
+    .modal-body {
+      gap: 1rem;
+    }
+    .product-title {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .input-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 1rem;
+      overflow: hidden;
+
+      .ig {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+
+        .input-label {
+          font-size: 0.75rem;
+          color: white;
+        }
+        input {
+          background-color: rgb(63, 63, 63);
+          outline: none;
+          border: none;
+          border-radius: 0.25rem;
+          width: 100%;
+          padding: 0.25rem;
+          color: white;
+          font-size: 0.75rem;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input[type="number"] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+    .edit-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+
+      button {
+        outline: none;
+        border: none;
+        font-size: 0.75rem;
+      }
+
+      .cancel {
+        color: rgb(255, 238, 2);
+        background-color: transparent;
+      }
+
+      .save {
+        padding: 0.25rem 0.5rem;
+        color: gray;
+        border-radius: 0.25rem;
+        background-color: rgb(63, 63, 63);
+      }
+    }
+  }
+}
